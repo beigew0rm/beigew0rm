@@ -2,10 +2,11 @@
 
 ![Screenshot_1](https://github.com/user-attachments/assets/31033959-508f-44eb-9784-d68e51b6d6fd)
 
-
+<div align=center>
   <a align="left" href="https://github.com/beigew0rm/BadUSB-Files-For-FlipperZero" title="BadUSB-Files-For-FlipperZero"><img align="left" height="150" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=BadUSB-Files-For-FlipperZero&theme=midnight-purple"></a>
 
   <a align="right" href="https://github.com/beigew0rm/Powershell-Tools-and-Toys" title="Powershell-Tools-and-Toys"><img align="right" height="150" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=Powershell-Tools-and-Toys&theme=midnight-purple"></a>
+</div>
 
 <br>
 
