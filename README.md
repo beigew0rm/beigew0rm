@@ -7,15 +7,21 @@
 <br></br>
 
 <div align=center>
-  <a align="left" href="https://github.com/beigew0rm/BadUSB-Files-For-FlipperZero" title="BadUSB-Files-For-FlipperZero"><img align="left" height="130" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=BadUSB-Files-For-FlipperZero&theme=midnight-purple"></a>
+  <a align="left" href="https://github.com/beigew0rm/BadUSB-Files-For-FlipperZero" title="BadUSB-Files-For-FlipperZero"><img align="left" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=BadUSB-Files-For-FlipperZero&theme=midnight-purple"></a>
 
-  <a align="right" href="https://github.com/beigew0rm/Powershell-Tools-and-Toys" title="Powershell-Tools-and-Toys"><img align="right" height="130" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=Powershell-Tools-and-Toys&theme=midnight-purple"></a>
+  <a align="right" href="https://github.com/beigew0rm/Powershell-Tools-and-Toys" title="Powershell-Tools-and-Toys"><img align="right" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=Powershell-Tools-and-Toys&theme=midnight-purple"></a>
 </div>
 
 <div align=center>
-  <a align="left" href="https://github.com/beigew0rm/Posh-Anti-Analysis" title="Posh-Anti-Analysis"><img align="left" height="130" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=Posh-Anti-Analysis&theme=midnight-purple"></a>
+  <a align="left" href="https://github.com/beigew0rm/Posh-Anti-Analysis" title="Posh-Anti-Analysis"><img align="left" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=Posh-Anti-Analysis&theme=midnight-purple"></a>
 
-  <a align="right" href="https://github.com/beigew0rm/PoSh-Control" title="PoSh-Control"><img align="right" height="130" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=PoSh-Control&theme=midnight-purple"></a>
+  <a align="right" href="https://github.com/beigew0rm/PoSh-Control" title="PoSh-Control"><img align="right" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=PoSh-Control&theme=midnight-purple"></a>
+</div>
+
+<div align=center>
+  <a align="left" href="https://github.com/beigew0rm/World-of-Scanners" title="World-of-Scanners"><img align="left" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=World-of-Scanners&theme=midnight-purple"></a>
+
+  <a align="right" href="https://github.com/beigew0rm/Login-Portals-HTML" title="Login-Portals-HTML"><img align="right" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=Login-Portals-HTML&theme=midnight-purple"></a>
 </div>
 
 <br>
