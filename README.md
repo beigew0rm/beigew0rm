@@ -1,11 +1,7 @@
 ## Hi there 👋
 
-![pwnpi](https://github.com/user-attachments/assets/f8f9d996-fa1f-4b5d-bee8-b92c4c80e7fb)
+![Screenshot_1](https://github.com/user-attachments/assets/31033959-508f-44eb-9784-d68e51b6d6fd)
 
-<br>
-
-![line](https://github.com/user-attachments/assets/aa1928fa-bbf5-46b9-9138-ded0a482e7f9)
-</br>
 
   <a align="left" href="https://github.com/beigew0rm/BadUSB-Files-For-FlipperZero" title="BadUSB-Files-For-FlipperZero"><img align="left" height="150" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=BadUSB-Files-For-FlipperZero&theme=midnight-purple"></a>
 
