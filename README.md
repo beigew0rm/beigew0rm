@@ -1,6 +1,10 @@
-## Hi there 👋
 
 ![Screenshot_1](https://github.com/user-attachments/assets/31033959-508f-44eb-9784-d68e51b6d6fd)
+
+<div align=center>
+<h2>My Repositories</h2>
+</div>
+<br></br>
 
 <div align=center>
   <a align="left" href="https://github.com/beigew0rm/BadUSB-Files-For-FlipperZero" title="BadUSB-Files-For-FlipperZero"><img align="left" height="150" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=BadUSB-Files-For-FlipperZero&theme=midnight-purple"></a>
