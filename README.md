@@ -25,9 +25,9 @@
 </div>
 
 <div align=center>
-  <a align="left" href="https://github.com/beigew0rm/PoshCord-C2" title="PoshCord-C2"><img align="left" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=PoshCord-C2&theme=midnight-purple"></a>
+  <a align="left" href="https://github.com/beigew0rm/Posh-LAN" title="Posh-LAN"><img align="left" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=Posh-LAN&theme=midnight-purple"></a>
 
-  <a align="right" href="https://github.com/beigew0rm/PoshGram-C2" title="PoshGram-C2"><img align="right" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=PoshGram-C2&theme=midnight-purple"></a>
+  <a align="right" href="https://github.com/beigew0rm/PoshCryptor" title="PoshCryptor"><img align="right" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=PoshCryptor&theme=midnight-purple"></a>
 </div>
 
 <div align=center>
