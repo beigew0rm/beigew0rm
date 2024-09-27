@@ -19,21 +19,21 @@
 </div>
 
 <div align=center>
+  <a align="left" href="https://github.com/beigew0rm/PoshCord-C2" title="PoshCord-C2"><img align="left" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=PoshCord-C2&theme=midnight-purple"></a>
+
+  <a align="right" href="https://github.com/beigew0rm/PoshGram-C2" title="PoshGram-C2"><img align="right" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=PoshGram-C2&theme=midnight-purple"></a>
+</div>
+
+<div align=center>
+  <a align="left" href="https://github.com/beigew0rm/PoshCord-C2" title="PoshCord-C2"><img align="left" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=PoshCord-C2&theme=midnight-purple"></a>
+
+  <a align="right" href="https://github.com/beigew0rm/PoshGram-C2" title="PoshGram-C2"><img align="right" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=PoshGram-C2&theme=midnight-purple"></a>
+</div>
+
+<div align=center>
   <a align="left" href="https://github.com/beigew0rm/World-of-Scanners" title="World-of-Scanners"><img align="left" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=World-of-Scanners&theme=midnight-purple"></a>
 
   <a align="right" href="https://github.com/beigew0rm/Login-Portals-HTML" title="Login-Portals-HTML"><img align="right" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=Login-Portals-HTML&theme=midnight-purple"></a>
-</div>
-
-<div align=center>
-  <a align="left" href="https://github.com/beigew0rm/PoshCord-C2" title="PoshCord-C2"><img align="left" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=PoshCord-C2&theme=midnight-purple"></a>
-
-  <a align="right" href="https://github.com/beigew0rm/PoshGram-C2" title="PoshGram-C2"><img align="right" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=PoshGram-C2&theme=midnight-purple"></a>
-</div>
-
-<div align=center>
-  <a align="left" href="https://github.com/beigew0rm/PoshCord-C2" title="PoshCord-C2"><img align="left" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=PoshCord-C2&theme=midnight-purple"></a>
-
-  <a align="right" href="https://github.com/beigew0rm/PoshGram-C2" title="PoshGram-C2"><img align="right" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=PoshGram-C2&theme=midnight-purple"></a>
 </div>
 
 <div align=center>
