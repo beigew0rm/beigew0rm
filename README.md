@@ -24,6 +24,24 @@
   <a align="right" href="https://github.com/beigew0rm/Login-Portals-HTML" title="Login-Portals-HTML"><img align="right" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=Login-Portals-HTML&theme=midnight-purple"></a>
 </div>
 
+<div align=center>
+  <a align="left" href="https://github.com/beigew0rm/PoshCord-C2" title="PoshCord-C2"><img align="left" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=PoshCord-C2&theme=midnight-purple"></a>
+
+  <a align="right" href="https://github.com/beigew0rm/PoshGram-C2" title="PoshGram-C2"><img align="right" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=PoshGram-C2&theme=midnight-purple"></a>
+</div>
+
+<div align=center>
+  <a align="left" href="https://github.com/beigew0rm/PoshCord-C2" title="PoshCord-C2"><img align="left" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=PoshCord-C2&theme=midnight-purple"></a>
+
+  <a align="right" href="https://github.com/beigew0rm/PoshGram-C2" title="PoshGram-C2"><img align="right" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=PoshGram-C2&theme=midnight-purple"></a>
+</div>
+
+<div align=center>
+  <a align="left" href="https://github.com/beigew0rm/PwnPi-Scripts" title="PwnPi-Scripts"><img align="left" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=PwnPi-Scripts&theme=midnight-purple"></a>
+
+  <a align="right" href="https://github.com/beigew0rm/DigiSpark-BadUSB-Setup-Guide" title="DigiSpark-BadUSB-Setup-Guide"><img align="right" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=DigiSpark-BadUSB-Setup-Guide&theme=midnight-purple"></a>
+</div>
+
 <br>
 
 ![line](https://github.com/user-attachments/assets/aa1928fa-bbf5-46b9-9138-ded0a482e7f9)
