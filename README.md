@@ -7,9 +7,18 @@
 <br></br>
 
 <div align=center>
+<h4>Popular Repositories</h4>
+</div>
+
+<div align=center>
   <a align="left" href="https://github.com/beigew0rm/BadUSB-Files-For-FlipperZero" title="BadUSB-Files-For-FlipperZero"><img align="left" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=BadUSB-Files-For-FlipperZero&theme=midnight-purple"></a>
 
   <a align="right" href="https://github.com/beigew0rm/Powershell-Tools-and-Toys" title="Powershell-Tools-and-Toys"><img align="right" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=Powershell-Tools-and-Toys&theme=midnight-purple"></a>
+</div>
+
+<br></br>
+<div align=center>
+<h4>Powershell Repositories</h4>
 </div>
 
 <div align=center>
@@ -30,6 +39,22 @@
   <a align="right" href="https://github.com/beigew0rm/PoshCryptor" title="PoshCryptor"><img align="right" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=PoshCryptor&theme=midnight-purple"></a>
 </div>
 
+<br></br>
+<div align=center>
+<h4>Guides</h4>
+</div>
+
+<div align=center>
+  <a align="left" href="https://github.com/beigew0rm/PwnPi-OLED-Build-Guide" title="PwnPi-OLED-Build-Guide"><img align="left" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=PwnPi-OLED-Build-Guide&theme=midnight-purple"></a>
+
+  <a align="right" href="https://github.com/beigew0rm/DigiSpark-BadUSB-Setup-Guide" title="DigiSpark-BadUSB-Setup-Guide"><img align="right" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=DigiSpark-BadUSB-Setup-Guide&theme=midnight-purple"></a>
+</div>
+
+<br></br>
+<div align=center>
+<h4>Other Repositories</h4>
+</div>
+
 <div align=center>
   <a align="left" href="https://github.com/beigew0rm/World-of-Scanners" title="World-of-Scanners"><img align="left" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=World-of-Scanners&theme=midnight-purple"></a>
 
@@ -39,7 +64,7 @@
 <div align=center>
   <a align="left" href="https://github.com/beigew0rm/PwnPi-Scripts" title="PwnPi-Scripts"><img align="left" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=PwnPi-Scripts&theme=midnight-purple"></a>
 
-  <a align="right" href="https://github.com/beigew0rm/DigiSpark-BadUSB-Setup-Guide" title="DigiSpark-BadUSB-Setup-Guide"><img align="right" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=DigiSpark-BadUSB-Setup-Guide&theme=midnight-purple"></a>
+  <a align="right" href="https://github.com/beigew0rm/ESP8266-and-ESP32-Message-Board" title="ESP8266-and-ESP32-Message-Board"><img align="right" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=ESP8266-and-ESP32-Message-Board&theme=midnight-purple"></a>
 </div>
 
 <br>
