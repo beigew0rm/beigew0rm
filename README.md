@@ -43,6 +43,11 @@
   <a align="right" href="https://github.com/beigew0rm/PoshCryptor" title="PoshCryptor"><img align="right" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=PoshCryptor&theme=midnight-purple"></a>
 </div>
 
+<div align=center>
+  <a align="left" href="https://github.com/beigew0rm/Discord-LiveBOT" title="Discord-LiveBOT"><img align="left" height="120" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=beigew0rm&repo=Discord-LiveBOT&theme=midnight-purple"></a>
+
+</div>
+
 ![line2](https://github.com/user-attachments/assets/d0a6222f-adc0-45c1-a9b5-1ececbae0a08)
 
 <br></br>
