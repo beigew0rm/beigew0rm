@@ -1,15 +1,12 @@
-# Delete contents of Temp folder 
+Add-Type -AssemblyName System.Windows.Forms
+Add-Type -AssemblyName System.Drawing
+[System.Windows.Forms.Application]::EnableVisualStyles()
 
-rm $env:TEMP\* -r -Force -ErrorAction SilentlyContinue
+$s='[DllImport("user32.dll")][return: MarshalAs(UnmanagedType.Bool)]public static extern bool BlockInput(bool fBlockIt);'
+Add-Type -MemberDefinition $s -Name U -Namespace W
+[W.U]::BlockInput($true)
+sleep 5
+[W.U]::BlockInput($false)
 
-# Delete run box history
 
-reg delete HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU /va /f
-
-# Delete powershell history
-
-Remove-Item (Get-PSreadlineOption).HistorySavePath
-
-# Deletes contents of recycle bin
-
-Clear-RecycleBin -Force -ErrorAction SilentlyContinue
+(New-Object -ComObject Wscript.Shell).Popup("Hello, this is a pop-up message",5,"Title",0x0)
