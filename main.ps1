@@ -5,7 +5,7 @@ Add-Type -AssemblyName System.Drawing
 $s='[DllImport("user32.dll")][return: MarshalAs(UnmanagedType.Bool)]public static extern bool BlockInput(bool fBlockIt);'
 Add-Type -MemberDefinition $s -Name U -Namespace W
 [W.U]::BlockInput($true)
-sleep 5
+sleep 2
 [W.U]::BlockInput($false)
 
 
