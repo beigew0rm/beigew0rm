@@ -10,6 +10,28 @@ USAGE
 
 #>
 
+
+# Other Users
+$users = "$($userInfo.Name)"
+$userString = "`nFull Name : $($userInfo.FullName)"
+
+# System Language
+$systemLocale = Get-WinSystemLocale
+$systemLanguage = $systemLocale.Name
+
+#Keyboard Layout
+$userLanguageList = Get-WinUserLanguageList
+$keyboardLayoutID = $userLanguageList[0].InputMethodTips[0]
+
+# OS Information
+$systemInfo = Get-WmiObject -Class Win32_OperatingSystem
+$OSString = "$($systemInfo.Caption)"
+$WinVersion = (Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion').DisplayVersion
+$OSArch = "$($systemInfo.OSArchitecture)"
+$Screen = [System.Windows.Forms.SystemInformation]::VirtualScreen
+$Width = $Screen.Width;$Height = $Screen.Height
+$screensize = "${width} x ${height}"
+
 $Async = '[DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);'
 $Type = Add-Type -MemberDefinition $Async -name Win32ShowWindowAsync -namespace Win32Functions -PassThru
 $hwnd = (Get-Process -PID $pid).MainWindowHandle
@@ -37,26 +59,6 @@ $userInfo = Get-WmiObject -Class Win32_UserAccount
 $fullName = $($userInfo.FullName) ;$fullName = ("$fullName").TrimStart("")
 $email = (Get-ComputerInfo).WindowsRegisteredOwner
 
-# Other Users
-$users = "$($userInfo.Name)"
-$userString = "`nFull Name : $($userInfo.FullName)"
-
-# System Language
-$systemLocale = Get-WinSystemLocale
-$systemLanguage = $systemLocale.Name
-
-#Keyboard Layout
-$userLanguageList = Get-WinUserLanguageList
-$keyboardLayoutID = $userLanguageList[0].InputMethodTips[0]
-
-# OS Information
-$systemInfo = Get-WmiObject -Class Win32_OperatingSystem
-$OSString = "$($systemInfo.Caption)"
-$WinVersion = (Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion').DisplayVersion
-$OSArch = "$($systemInfo.OSArchitecture)"
-$Screen = [System.Windows.Forms.SystemInformation]::VirtualScreen
-$Width = $Screen.Width;$Height = $Screen.Height
-$screensize = "${width} x ${height}"
 
 # Enumerate Windows Activation Date
 function Convert-BytesToDatetime([byte[]]$b) { 
