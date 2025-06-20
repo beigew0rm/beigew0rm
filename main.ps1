@@ -52,60 +52,39 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
-#region NativeMethods
-/// <summary>
-/// A collection of native method imports from user32.dll.
-/// These are used to interact with low-level keyboard input functions.
-/// </summary>
-public static class NativeMethods
-{
-    /// <summary>
-    /// Retrieves the state of a virtual key. Returns a short value indicating the key state.
-    /// </summary>
-    /// <param name="virtualKeyCode">The virtual key code.</param>
-    /// <returns>A short indicating the key state.</returns>
-    [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
+public class User32 {
+    [DllImport("user32.dll", CharSet=CharSet.Auto, ExactSpelling=true)] 
     public static extern short GetAsyncKeyState(int virtualKeyCode);
 
-    /// <summary>
-    /// Copies the status of the 256 virtual keys to the specified buffer.
-    /// </summary>
-    /// <param name="keystate">A 256-element array that receives the status data.</param>
-    /// <returns>Nonzero if successful; otherwise, zero.</returns>
-    [DllImport("user32.dll", CharSet = CharSet.Auto)]
+    [DllImport("user32.dll", CharSet=CharSet.Auto)]
     public static extern int GetKeyboardState(byte[] keystate);
 
-    /// <summary>
-    /// Maps a virtual key to a scan code or character value.
-    /// </summary>
-    /// <param name="uCode">The virtual key code.</param>
-    /// <param name="uMapType">The translation to perform.</param>
-    /// <returns>The translated value.</returns>
-    [DllImport("user32.dll", CharSet = CharSet.Auto)]
+    [DllImport("user32.dll", CharSet=CharSet.Auto)]
     public static extern int MapVirtualKey(uint uCode, int uMapType);
 
-    /// <summary>
-    /// Translates the specified virtual-key code and keyboard state to the corresponding Unicode character or characters.
-    /// </summary>
-    /// <param name="wVirtKey">The virtual key code.</param>
-    /// <param name="wScanCode">The hardware scan code.</param>
-    /// <param name="lpkeystate">An array with the status of each virtual key.</param>
-    /// <param name="pwszBuff">A buffer that receives the translated Unicode character.</param>
-    /// <param name="cchBuff">The size of the buffer (in characters).</param>
-    /// <param name="wFlags">Behavior flags.</param>
-    /// <returns>The number of characters written to the buffer.</returns>
+    [DllImport("user32.dll", CharSet=CharSet.Auto)]
+    public static extern int ToUnicode(uint wVirtKey, uint wScanCode, byte[] lpkeystate, StringBuilder pwszBuff, int cchBuff, uint wFlags);
+
+    [DllImport("user32.dll")]
+    public static extern IntPtr GetForegroundWindow();
+
+    [DllImport("user32.dll", SetLastError = true)]
+    public static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
+
+    [DllImport("user32.dll", SetLastError = true)]
+    public static extern int GetWindowTextLength(IntPtr hWnd);
+
+    [DllImport("user32.dll", SetLastError = true)]
+    public static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
+
     [DllImport("user32.dll", CharSet = CharSet.Auto)]
-    public static extern int ToUnicode(
-        uint wVirtKey,
-        uint wScanCode,
-        byte[] lpkeystate,
-        StringBuilder pwszBuff,
-        int cchBuff,
-        uint wFlags
-    );
+    public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+    [DllImport("user32.dll")]
+    public static extern bool IsWindowVisible(IntPtr hWnd);
 }
-#endregion
 '@
+
 
 $defs = Add-Type -MemberDefinition $defs -Name 'Win32' -Namespace API -PassThru
 
