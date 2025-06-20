@@ -16,37 +16,6 @@ else{
     $Type::ShowWindowAsync($hwnd, 0)
 }
 
-<#
-Ablaze â€“ On fire; brightly burning with intensity.
-
-Banter â€“ Playful, teasing talk between close friends.
-
-Crisp â€“ Firm, dry, and easily breakable texture.
-
-Dapper â€“ Stylish, neat man with elegant appearance.
-
-Elicit â€“ Draw out a response or reaction.
-
-Fathom â€“ Understand something deeply, often abstractly.
-
-Glimpse â€“ Quick, brief look without full details.
-
-Havoc â€“ Widespread destruction; total chaos and disorder.
-
-Imbue â€“ Fill or inspire with certain feelings.
-
-Jovial â€“ Cheerful, friendly, full of good humor.
-
-Keen â€“ Sharp, eager, or intellectually perceptive mind.
-
-Lurk â€“ Remain hidden, waiting to spring forth.
-
-Mirth â€“ Amusement expressed through laughter or cheerfulness.
-
-Nimble â€“ Quick and light in movement or action.
-
-#>
-
 Function SendWH {
       $Escaped = $send -replace '[&<>]', {$args[0].Value.Replace('&', '&amp;').Replace('<', '&lt;').Replace('>', '&gt;')}
       $timestamp = Get-Date -Format "dd-MM-yyyy HH:mm:ss"
